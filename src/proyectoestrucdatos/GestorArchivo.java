@@ -23,6 +23,7 @@ import java.nio.charset.StandardCharsets;
 public class GestorArchivo {
     private static final String ENCABEZADO_ESTACIONES = "ID_Estacion,Nombre,Linea,Zona,Capacidad_Pasajeros_Hora";
     private static final String ENCABEZADO_CONEXIONES = "Estacion_Origen,Estacion_Destino,Tiempo_Minutos";
+    //17*
     private static final String RECURSO_MAESTRO = "metro_caracas.csv";
     private static final String RUTA_MAESTRO = "datos" + File.separator + "metro_caracas.csv";
 
@@ -51,6 +52,7 @@ public class GestorArchivo {
      * @throws IOException si no se puede leer o crear el archivo
      */
     public ResultadoCarga cargarPorDefecto(RedTransporte red) throws IOException {
+       //18*
         File archivo = new File(RUTA_MAESTRO);
         if (!archivo.exists()) {
             InputStream recurso = GestorArchivo.class.getResourceAsStream(RECURSO_MAESTRO);
@@ -61,6 +63,7 @@ public class GestorArchivo {
             if (carpeta != null && !carpeta.exists()) {
                 carpeta.mkdirs();
             }
+           //19*
             try (InputStream in = recurso; FileOutputStream out = new FileOutputStream(archivo)) {
                 byte[] buffer = new byte[4096];
                 int n;
@@ -83,6 +86,7 @@ public class GestorArchivo {
      * @return resumen de la carga
      * @throws IOException si algún archivo no puede leerse o no contiene datos válidos
      */
+    //20*
     public ResultadoCarga cargar(RedTransporte red, File[] archivos) throws IOException {
         ResultadoCarga resultado = new ResultadoCarga();
         ListaEnlazada<String[]> estaciones = new ListaEnlazada<>();
@@ -97,6 +101,7 @@ public class GestorArchivo {
         boolean hayEstaciones = false;
         Nodo<String[]> nodo = estaciones.getCabeza();
         while (nodo != null) {
+            //21*
             String[] c = nodo.getDato();
             int capacidad = Integer.parseInt(c[4]);
             if (red.agregarEstacion(new Estacion(c[0], c[1], c[2], c[3], capacidad))) {
@@ -137,6 +142,7 @@ public class GestorArchivo {
         return e;
     }
 
+    //22*
     private void leerLineas(File archivo, ListaEnlazada<String[]> estaciones,
             ListaEnlazada<String[]> conexiones, ResultadoCarga resultado) throws IOException {
         try (Reader lector = new InputStreamReader(new FileInputStream(archivo), StandardCharsets.UTF_8);
@@ -145,6 +151,7 @@ public class GestorArchivo {
             int numero = 0;
             while ((linea = br.readLine()) != null) {
                 numero++;
+                //23*
                 if (numero == 1 && !linea.isEmpty() && linea.charAt(0) == '﻿') {
                     linea = linea.substring(1);
                 }
@@ -181,6 +188,7 @@ public class GestorArchivo {
         if (texto.isEmpty() || texto.length() > 9) {
             return false;
         }
+        //24
         for (int i = 0; i < texto.length(); i++) {
             if (!Character.isDigit(texto.charAt(i))) {
                 return false;
@@ -228,6 +236,7 @@ public class GestorArchivo {
      * @param destino archivo de salida
      * @throws IOException si falla la escritura
      */
+   //25*
     public void guardarEn(RedTransporte red, File destino) throws IOException {
         try (Writer w = new OutputStreamWriter(new FileOutputStream(destino), StandardCharsets.UTF_8);
                 BufferedWriter bw = new BufferedWriter(w)) {
@@ -250,6 +259,7 @@ public class GestorArchivo {
                 String idOrigen = v.getDato().getEstacion().getId();
                 Nodo<Arista> a = v.getDato().getAdyacentes().getCabeza();
                 while (a != null) {
+                    //26*
                     String idDestino = a.getDato().getDestino().getId();
                     if (idOrigen.compareToIgnoreCase(idDestino) < 0) {
                         bw.write(idOrigen + "," + idDestino + "," + a.getDato().getTiempoMinutos());
