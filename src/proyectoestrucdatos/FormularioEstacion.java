@@ -18,8 +18,10 @@ import javax.swing.SpinnerNumberModel;
  *
  * @author Maria Andreina Piñero
  */
+//9*
 public class FormularioEstacion extends JPanel {
     private final RedTransporte red;
+    //10*
     private final JTextField campoId = new JTextField(14);
     private final JTextField campoNombre = new JTextField(14);
     private final JTextField campoLinea = new JTextField(14);
@@ -36,6 +38,7 @@ public class FormularioEstacion extends JPanel {
      *
      * @param red red existente, usada para elegir las estaciones a conectar
      */
+   //11*
     public FormularioEstacion(RedTransporte red) {
         super(new GridBagLayout());
         this.red = red;
@@ -52,6 +55,7 @@ public class FormularioEstacion extends JPanel {
         agregarFila(4, "Capacidad pasajeros/hora:", campoCapacidad);
         agregarFila(5, "Conectar con:", comboVecino);
         agregarFila(6, "Tiempo (min):", campoTiempo);
+       //12*
         JButton anadir = new JButton("Añadir conexión");
         anadir.addActionListener(e -> anadirConexion());
         GridBagConstraints c = restricciones(7, 1);
@@ -75,7 +79,7 @@ public class FormularioEstacion extends JPanel {
         add(new JLabel(texto), restricciones(fila, 0));
         add(campo, restricciones(fila, 1));
     }
-
+//13*
     private void anadirConexion() {
         Estacion vecino = (Estacion) comboVecino.getSelectedItem();
         if (vecino == null) {
@@ -97,7 +101,7 @@ public class FormularioEstacion extends JPanel {
         tiempos.agregar(minutos);
         refrescarLista();
     }
-
+//14*
     private void refrescarLista() {
         StringBuilder sb = new StringBuilder();
         Nodo<Estacion> n = vecinos.getCabeza();
@@ -115,6 +119,7 @@ public class FormularioEstacion extends JPanel {
      *
      * @return mensaje de error, o null si los datos son válidos
      */
+   //15*
     public String validar() {
         String id = campoId.getText().trim();
         String nombre = campoNombre.getText().trim();
@@ -142,6 +147,7 @@ public class FormularioEstacion extends JPanel {
     public Estacion construirEstacion() {
         String linea = campoLinea.getText().trim();
         String zona = campoZona.getText().trim();
+       //16*
         return new Estacion(campoId.getText().trim(), campoNombre.getText().trim(),
                 linea.isEmpty() ? "Sin línea" : linea, zona.isEmpty() ? "Sin zona" : zona,
                 (Integer) campoCapacidad.getValue());
