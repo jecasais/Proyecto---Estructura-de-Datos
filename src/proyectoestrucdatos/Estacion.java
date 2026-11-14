@@ -107,7 +107,7 @@ public class Estacion {
     public String getInformacion() {
         return nombre + " (" + linea + " - " + zona + ")";
     }
-
+//8*
     @Override
     public String toString() {
         return nombre + " [" + id + "]";
