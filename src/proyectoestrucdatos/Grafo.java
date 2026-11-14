@@ -6,6 +6,7 @@ package proyectoestrucdatos;
  *
  * @author Elohym Casais
  */
+//27*
 public class Grafo {
     private final ListaEnlazada<Vertice> vertices;
 
@@ -58,6 +59,7 @@ public class Grafo {
      * @param tiempoMinutos tiempo de traslado en minutos (mayor que cero)
      * @return true si ambas estaciones existen, son distintas y el tiempo es válido
      */
+    //28*
     public boolean agregarConexion(String idOrigen, String idDestino, int tiempoMinutos) {
         if (tiempoMinutos <= 0 || idOrigen == null || idOrigen.equalsIgnoreCase(idDestino)) {
             return false;
