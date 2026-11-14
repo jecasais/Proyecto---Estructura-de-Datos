@@ -28,10 +28,12 @@ public class TablaHash {
     /**
      * Crea una tabla con capacidad inicial 101.
      */
+    //39*
     public TablaHash() {
         this(101);
     }
 
+    //40*
     @SuppressWarnings("unchecked")
     private ListaEnlazada<EntradaHash>[] crearArreglo(int n) {
         ListaEnlazada<EntradaHash>[] arreglo = new ListaEnlazada[n];
@@ -41,6 +43,7 @@ public class TablaHash {
         return arreglo;
     }
 
+    //41*
     private int calcularIndice(String clave, int modulo) {
         long hash = 7;
         for (int i = 0; i < clave.length(); i++) {
