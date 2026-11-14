@@ -30,6 +30,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  *
  * @author Maria Andreina Piñero
  */
+//42*
 public class VentanaPrincipal extends JFrame {
     private final RedTransporte red = new RedTransporte();
     private final GestorArchivo gestorArchivo = new GestorArchivo();
@@ -59,6 +60,7 @@ public class VentanaPrincipal extends JFrame {
         setMinimumSize(new Dimension(980, 620));
         setLocationRelativeTo(null);
         construirInterfaz();
+        //43*
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -68,6 +70,7 @@ public class VentanaPrincipal extends JFrame {
         cargarArchivoInicial();
     }
 
+    //44*
     private void construirInterfaz() {
         JPanel lateral = new JPanel();
         lateral.setLayout(new BoxLayout(lateral, BoxLayout.Y_AXIS));
@@ -141,6 +144,7 @@ public class VentanaPrincipal extends JFrame {
         return b;
     }
 
+    //45*
     private void mensaje(String texto, int tipo) {
         JOptionPane.showMessageDialog(this, texto, "UrbanRoute", tipo);
     }
@@ -199,6 +203,7 @@ public class VentanaPrincipal extends JFrame {
                 return;
             }
         }
+        //46*
         JFileChooser selector = new JFileChooser(new File("datos").isDirectory() ? new File("datos") : new File("."));
         selector.setDialogTitle("Seleccionar archivo(s) CSV");
         selector.setMultiSelectionEnabled(true);
@@ -526,6 +531,7 @@ public class VentanaPrincipal extends JFrame {
         }
         sb.append("\nRanking de las 10 estaciones con más conexiones:\n");
         Vertice[] ranking = analizador.rankingPorGrado(red.getGrafo());
+        //48
         for (int i = 0; i < ranking.length && i < 10; i++) {
             sb.append(String.format("%2d. %-26s %d conexiones%n", i + 1,
                     ranking[i].getEstacion().getNombre(), ranking[i].getGrado()));
@@ -555,6 +561,7 @@ public class VentanaPrincipal extends JFrame {
                 return;
             }
         }
+        //48*
         panelGrafo.cerrar();
         dispose();
         System.exit(0);
