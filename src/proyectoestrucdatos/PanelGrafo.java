@@ -42,9 +42,12 @@ public class PanelGrafo extends JPanel {
     /**
      * Crea el panel con un grafo visual vacío.
      */
+   //32*
+    //34*
     public PanelGrafo() {
         super(new BorderLayout());
         System.setProperty("org.graphstream.ui", "swing");
+        //33*
         grafoVisual = new SingleGraph("UrbanRoute");
         grafoVisual.setAttribute("ui.stylesheet", HOJA_ESTILO);
         grafoVisual.setAttribute("ui.quality");
@@ -130,6 +133,7 @@ public class PanelGrafo extends JPanel {
                 hayDigitos = true;
             }
         }
+       //35*
         int indice = hayDigitos ? (numero + PALETA.length - 1) % PALETA.length
                 : (linea.toLowerCase().hashCode() & 0x7fffffff) % PALETA.length;
         return PALETA[indice];
@@ -217,6 +221,7 @@ public class PanelGrafo extends JPanel {
         } else {
             Nodo<String> n = lineas.getCabeza();
             while (n != null) {
+                //36*
                 JLabel etiqueta = new JLabel(n.getDato());
                 etiqueta.setIcon(new IconoColor(Color.decode(colorLinea(n.getDato()))));
                 leyenda.add(etiqueta);
@@ -272,6 +277,7 @@ public class PanelGrafo extends JPanel {
         visor.close();
     }
 
+    //37*
     private static class IconoColor implements javax.swing.Icon {
         private final Color color;
 
