@@ -6,9 +6,10 @@ package proyectoestrucdatos;
  *
  * @author Maria Andreina Piñero
  */
+//1*
 public class AnalizadorRed {
     private static final int INFINITO = Integer.MAX_VALUE;
-
+//3*
     private Vertice[] aArreglo(Grafo grafo) {
         Vertice[] arreglo = new Vertice[grafo.getNumVertices()];
         Nodo<Vertice> aux = grafo.getVertices().getCabeza();
@@ -19,7 +20,7 @@ public class AnalizadorRed {
         }
         return arreglo;
     }
-
+//2*
     private int indiceDe(Vertice[] vertices, String id) {
         for (int i = 0; i < vertices.length; i++) {
             if (vertices[i].getEstacion().getId().equalsIgnoreCase(id)) {
@@ -37,10 +38,12 @@ public class AnalizadorRed {
      * @param idDestino id de la estación de destino
      * @return resultado con el camino y el tiempo total; sin ruta si no hay conexión o los ids no existen
      */
+   //55*
     public ResultadoRuta rutaMinima(Grafo grafo, String idOrigen, String idDestino) {
         Vertice[] vertices = aArreglo(grafo);
         int n = vertices.length;
         int origen = indiceDe(vertices, idOrigen);
+        //4*
         int destino = indiceDe(vertices, idDestino);
         ListaEnlazada<Estacion> camino = new ListaEnlazada<>();
         if (origen < 0 || destino < 0) {
@@ -96,6 +99,7 @@ public class AnalizadorRed {
      * @param grafo grafo a analizar
      * @return lista de subredes; cada una es la lista de sus estaciones
      */
+    //6*
     public ListaEnlazada<ListaEnlazada<Estacion>> componentesConexos(Grafo grafo) {
         Vertice[] vertices = aArreglo(grafo);
         int n = vertices.length;
@@ -135,6 +139,7 @@ public class AnalizadorRed {
      * @param grafo grafo a analizar
      * @return vértices ordenados de mayor a menor grado
      */
+    //7*
     public Vertice[] rankingPorGrado(Grafo grafo) {
         Vertice[] v = aArreglo(grafo);
         for (int i = 1; i < v.length; i++) {
