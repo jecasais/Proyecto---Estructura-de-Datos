@@ -7,6 +7,7 @@ package proyectoestrucdatos;
  * @author Elohym Casais
  * @param <T> tipo de dato de los elementos en la lista
  */
+//29*
 public class ListaEnlazada<T> {
     private Nodo<T> cabeza;
     private Nodo<T> cola;
@@ -46,6 +47,7 @@ public class ListaEnlazada<T> {
     public boolean eliminar(T dato) {
         Nodo<T> previo = null;
         Nodo<T> actual = cabeza;
+        //30*
         while (actual != null) {
             if (actual.getDato() == dato || (actual.getDato() != null && actual.getDato().equals(dato))) {
                 if (previo == null) {
@@ -72,6 +74,7 @@ public class ListaEnlazada<T> {
      * @return elemento en esa posición
      * @throws IndexOutOfBoundsException si el índice está fuera de rango
      */
+    //31*
     public T obtener(int indice) {
         if (indice < 0 || indice >= tamano) {
             throw new IndexOutOfBoundsException("Índice fuera de rango: " + indice);
