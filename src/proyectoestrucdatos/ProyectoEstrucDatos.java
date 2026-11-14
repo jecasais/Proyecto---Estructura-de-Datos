@@ -14,6 +14,7 @@ public class ProyectoEstrucDatos {
      *
      * @param args argumentos de línea de comandos (no se usan)
      */
+    //38*
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new VentanaPrincipal().setVisible(true));
     }
