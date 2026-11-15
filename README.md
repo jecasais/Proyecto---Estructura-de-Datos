@@ -13,3 +13,6 @@ UrbanRoute es una herramienta de software desarrollada en Java que permite model
 * **Alex Sistiaga**
 
 ---
+## Ejecución
+
+Abrir la carpeta `ProyectoEstrucDatos` en NetBeans y ejecutar el proyecto. Las librerías de GraphStream se encuentran en `ProyectoEstrucDatos/lib`. Al iniciar se carga el archivo maestro `datos/metro_caracas.csv`.
